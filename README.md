@@ -42,9 +42,12 @@ $$\text{Rolling Mean}_t = \frac{y_{t-1} + y_{t-2} + y_{t-3}}{3}$$
 
 ---
 
-## 3. Dataset Description
+## 3. Dataset Description & Provenance
 
-* **Source**: Kaggle *Supplement Sales Data* (Weekly Expanded Retail Benchmark)
+* **Dataset Name**: [Supplement Sales Data](https://www.kaggle.com/datasets/zahidferoze/supplement-sales-data)
+* **Author / Publisher**: Zahid Feroze on Kaggle
+* **Direct File**: `Supplement_Sales_Weekly_Expanded.csv` (297,207 bytes, 4,384 rows, 10 columns)
+* **License**: Public Domain / Community Dataset
 * **Total Observations**: 4,384 records across 16 supplement categories (2020-01-06 to 2025-03-31)
 * **Whey Protein Cohort**: 274 consecutive weekly observation dates (1 observation/week across alternating locations and platforms)
 * **Target Variable (`Units Sold`)**:
@@ -52,6 +55,11 @@ $$\text{Rolling Mean}_t = \frac{y_{t-1} + y_{t-2} + y_{t-3}}{3}$$
 * **Geographic Distribution**: Canada ($100$ weeks), UK ($93$ weeks), USA ($81$ weeks)
 * **Platform Distribution**: Walmart ($96$ weeks), iHerb ($97$ weeks), Amazon ($81$ weeks)
 * **Pricing & Promotions**: Average price $\$34.44$ ($\$10.05$ – $\$59.64$), average discount $12.1\%$ ($0\%$ – $25\%$)
+
+To download via the Kaggle API:
+```bash
+kaggle datasets download -d zahidferoze/supplement-sales-data -f Supplement_Sales_Weekly_Expanded.csv -p data/ --unzip
+```
 
 ---
 

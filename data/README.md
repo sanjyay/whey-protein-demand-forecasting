@@ -2,14 +2,23 @@
 
 This directory contains the primary data used in the **Whey Protein Demand Forecasting** project.
 
-## Dataset Provenance
-* **File Name**: `Supplement_Sales_Weekly_Expanded.csv`
-* **Source**: Kaggle — *Supplement Sales Data* (Weekly Expanded Retail Benchmark)
+## Dataset Provenance & Attribution
+* **Dataset Title**: Supplement Sales Data (Weekly Expanded Retail Benchmark)
+* **Author / Publisher**: Zahid Feroze
+* **Source Platform**: Kaggle
+* **Kaggle URL**: [https://www.kaggle.com/datasets/zahidferoze/supplement-sales-data](https://www.kaggle.com/datasets/zahidferoze/supplement-sales-data)
+* **Target File Name**: `Supplement_Sales_Weekly_Expanded.csv`
 * **File Size**: 297,207 bytes (~297 kB)
 * **Total Rows**: 4,384 records
 * **Total Columns**: 10 columns
 * **Temporal Scope**: January 6, 2020 to March 31, 2025 (274 consecutive weekly observation dates)
 * **Cadence**: Weekly (every Monday)
+* **License**: Public Domain / Open Benchmark
+
+### Download via Kaggle CLI
+```bash
+kaggle datasets download -d zahidferoze/supplement-sales-data -f Supplement_Sales_Weekly_Expanded.csv
+```
 
 ## Schema
 
