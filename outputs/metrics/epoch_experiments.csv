@@ -1,0 +1,6 @@
+epochs,val_mae,units_input,num_layers,learning_rate,activation
+10,8.9647,64,2,0.005,relu
+25,9.4661,64,2,0.005,relu
+50,8.7007,64,2,0.005,relu
+75,8.4145,64,2,0.005,relu
+100,9.1149,64,2,0.005,relu

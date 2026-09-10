@@ -1,0 +1,12 @@
+{
+  "name": "whey-protein-demand-forecasting",
+  "private": true,
+  "version": "1.0.0",
+  "description": "ANN-based weekly sales forecasting across the USA, UK, and Canada",
+  "scripts": {
+    "install:all": "yarn --cwd website install",
+    "dev": "yarn --cwd website dev",
+    "build": "yarn --cwd website build",
+    "preview": "yarn --cwd website preview"
+  }
+}
