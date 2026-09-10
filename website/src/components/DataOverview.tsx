@@ -1,5 +1,5 @@
 import React from 'react';
-import { Database, Calendar, Tag, Layers, CheckCircle2, AlertTriangle, HelpCircle, ExternalLink } from 'lucide-react';
+import { Database, Calendar, Tag, Layers, CheckCircle2, AlertTriangle, HelpCircle, ExternalLink, Download } from 'lucide-react';
 import { SummaryMetrics } from '../types';
 
 interface DataOverviewProps {
@@ -41,30 +41,42 @@ export const DataOverview: React.FC<DataOverviewProps> = ({ data }) => {
         </div>
 
         {/* Kaggle Provenance Banner */}
-        <div className="mb-10 p-5 bg-gradient-to-r from-blue-950/40 via-slate-900 to-slate-900 border border-blue-900/50 rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="mb-10 p-5 bg-gradient-to-r from-blue-950/40 via-slate-900 to-slate-900 border border-blue-900/50 rounded-xl flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 mb-1.5">
               <span className="px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider bg-blue-500/20 text-blue-300 border border-blue-500/30 rounded">
                 Verified Benchmark Source
               </span>
-              <span className="text-xs text-slate-400">Published on Kaggle by <strong className="text-slate-200">Zahid Feroze</strong></span>
+              <span className="text-xs text-slate-400">Published on Kaggle by <strong className="text-slate-200">Zahid Mughal</strong></span>
             </div>
             <h3 className="text-base font-bold text-white">
-              Supplement Sales Data &mdash; Weekly Expanded Benchmark
+              Supplement Sales Data &mdash; Weekly Expanded Retail Benchmark
             </h3>
             <p className="text-xs text-slate-400 mt-1">
               File: <code className="text-brand-300 font-mono">Supplement_Sales_Weekly_Expanded.csv</code> (297 KB &bull; 4,384 records &bull; 10 columns &bull; Jan 2020 &ndash; Mar 2025)
             </p>
           </div>
-          <a
-            href="https://www.kaggle.com/datasets/zahidferoze/supplement-sales-data"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-lg transition-colors shadow-sm shrink-0"
-          >
-            <span>View on Kaggle</span>
-            <ExternalLink className="w-3.5 h-3.5" />
-          </a>
+          <div className="flex flex-wrap items-center gap-3 shrink-0">
+            <a
+              href="https://www.kaggle.com/datasets/zahidmughal2343/supplement-sales-data"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-3.5 py-2 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-lg transition-colors shadow-sm"
+            >
+              <span>View on Kaggle</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+            <a
+              href="https://raw.githubusercontent.com/sanjyay/whey-protein-demand-forecasting/main/data/Supplement_Sales_Weekly_Expanded.csv"
+              download
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-semibold rounded-lg transition-colors shadow-sm"
+            >
+              <Download className="w-3.5 h-3.5 text-brand-400" />
+              <span>Direct CSV Download</span>
+            </a>
+          </div>
         </div>
 
         {/* Scope Cards */}

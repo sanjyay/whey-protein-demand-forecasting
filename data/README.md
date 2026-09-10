@@ -4,9 +4,10 @@ This directory contains the primary data used in the **Whey Protein Demand Forec
 
 ## Dataset Provenance & Attribution
 * **Dataset Title**: Supplement Sales Data (Weekly Expanded Retail Benchmark)
-* **Author / Publisher**: Zahid Feroze
+* **Author / Publisher**: Zahid Mughal (`zahidmughal2343`)
 * **Source Platform**: Kaggle
-* **Kaggle URL**: [https://www.kaggle.com/datasets/zahidferoze/supplement-sales-data](https://www.kaggle.com/datasets/zahidferoze/supplement-sales-data)
+* **Verified Kaggle URL**: [https://www.kaggle.com/datasets/zahidmughal2343/supplement-sales-data](https://www.kaggle.com/datasets/zahidmughal2343/supplement-sales-data)
+* **Direct Raw CSV Download**: [Raw GitHub Link](https://raw.githubusercontent.com/sanjyay/whey-protein-demand-forecasting/main/data/Supplement_Sales_Weekly_Expanded.csv)
 * **Target File Name**: `Supplement_Sales_Weekly_Expanded.csv`
 * **File Size**: 297,207 bytes (~297 kB)
 * **Total Rows**: 4,384 records
@@ -15,9 +16,16 @@ This directory contains the primary data used in the **Whey Protein Demand Forec
 * **Cadence**: Weekly (every Monday)
 * **License**: Public Domain / Open Benchmark
 
-### Download via Kaggle CLI
+### Download Options
+
+#### Option A: Direct Download (No Kaggle Account Required)
 ```bash
-kaggle datasets download -d zahidferoze/supplement-sales-data -f Supplement_Sales_Weekly_Expanded.csv
+curl -o data/Supplement_Sales_Weekly_Expanded.csv https://raw.githubusercontent.com/sanjyay/whey-protein-demand-forecasting/main/data/Supplement_Sales_Weekly_Expanded.csv
+```
+
+#### Option B: Download via Kaggle CLI
+```bash
+kaggle datasets download -d zahidmughal2343/supplement-sales-data -f Supplement_Sales_Weekly_Expanded.csv -p data/ --unzip
 ```
 
 ## Schema

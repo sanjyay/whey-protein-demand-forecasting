@@ -44,10 +44,10 @@ $$\text{Rolling Mean}_t = \frac{y_{t-1} + y_{t-2} + y_{t-3}}{3}$$
 
 ## 3. Dataset Description & Provenance
 
-* **Dataset Name**: [Supplement Sales Data](https://www.kaggle.com/datasets/zahidferoze/supplement-sales-data)
-* **Author / Publisher**: Zahid Feroze on Kaggle
-* **Direct File**: `Supplement_Sales_Weekly_Expanded.csv` (297,207 bytes, 4,384 rows, 10 columns)
-* **License**: Public Domain / Community Dataset
+* **Dataset Name**: [Supplement Sales Data (Kaggle)](https://www.kaggle.com/datasets/zahidmughal2343/supplement-sales-data)
+* **Author / Publisher**: Zahid Mughal (`zahidmughal2343`) on Kaggle
+* **Direct Raw CSV**: [`data/Supplement_Sales_Weekly_Expanded.csv`](https://raw.githubusercontent.com/sanjyay/whey-protein-demand-forecasting/main/data/Supplement_Sales_Weekly_Expanded.csv) (297,207 bytes, 4,384 rows, 10 columns)
+* **License**: Public Domain / Open Benchmark
 * **Total Observations**: 4,384 records across 16 supplement categories (2020-01-06 to 2025-03-31)
 * **Whey Protein Cohort**: 274 consecutive weekly observation dates (1 observation/week across alternating locations and platforms)
 * **Target Variable (`Units Sold`)**:
@@ -56,9 +56,16 @@ $$\text{Rolling Mean}_t = \frac{y_{t-1} + y_{t-2} + y_{t-3}}{3}$$
 * **Platform Distribution**: Walmart ($96$ weeks), iHerb ($97$ weeks), Amazon ($81$ weeks)
 * **Pricing & Promotions**: Average price $\$34.44$ ($\$10.05$ – $\$59.64$), average discount $12.1\%$ ($0\%$ – $25\%$)
 
-To download via the Kaggle API:
+### Download Options
+
+**Direct Download (instant curl):**
 ```bash
-kaggle datasets download -d zahidferoze/supplement-sales-data -f Supplement_Sales_Weekly_Expanded.csv -p data/ --unzip
+curl -o data/Supplement_Sales_Weekly_Expanded.csv https://raw.githubusercontent.com/sanjyay/whey-protein-demand-forecasting/main/data/Supplement_Sales_Weekly_Expanded.csv
+```
+
+**Kaggle API:**
+```bash
+kaggle datasets download -d zahidmughal2343/supplement-sales-data -f Supplement_Sales_Weekly_Expanded.csv -p data/ --unzip
 ```
 
 ---
