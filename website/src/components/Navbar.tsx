@@ -3,9 +3,10 @@ import { Activity, Github, ExternalLink, Menu, X, BarChart3, Database } from 'lu
 
 interface NavbarProps {
   activeSection: string;
+  onSelectSection?: (id: string) => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
+export const Navbar: React.FC<NavbarProps> = ({ activeSection, onSelectSection }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -21,6 +22,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
     { id: 'overview', label: 'Overview' },
     { id: 'data', label: 'Data' },
     { id: 'trends', label: 'Trends' },
+    { id: 'audit', label: 'Audit' },
     { id: 'features', label: 'Features' },
     { id: 'model', label: 'Model' },
     { id: 'validation', label: 'Validation' },
@@ -36,7 +38,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 shrink-0">
             <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-brand-500 to-emerald-700 flex items-center justify-center shadow-lg shadow-brand-500/20">
               <Activity className="w-5 h-5 text-slate-950 font-bold" />
             </div>
@@ -48,20 +50,26 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
             </div>
           </div>
 
-          <nav className="hidden lg:flex items-center gap-1">
-            {navItems.map((item) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
-                  activeSection === item.id
-                    ? 'bg-slate-800 text-brand-500 border border-slate-700 shadow-sm'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-900/60'
-                }`}
-              >
-                {item.label}
-              </a>
-            ))}
+          <nav className="hidden xl:flex items-center gap-0.5">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.id;
+              return (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  onClick={() => onSelectSection?.(item.id)}
+                  className={`px-2.5 py-1.5 rounded-md text-xs font-medium transition-all ${
+                    isActive
+                      ? item.id === 'limitations'
+                        ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40 shadow-sm shadow-amber-500/10 font-semibold'
+                        : 'bg-slate-800 text-brand-400 border border-slate-700 shadow-sm font-semibold'
+                      : 'text-slate-300 hover:text-white hover:bg-slate-900/60'
+                  }`}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
           </nav>
 
           <div className="flex items-center gap-3">
@@ -76,7 +84,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
             </a>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-900"
+              className="xl:hidden p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-900"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -86,19 +94,29 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
       </div>
 
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-slate-950/95 backdrop-blur-xl border-b border-slate-800 px-4 pt-2 pb-4 space-y-1">
-          {navItems.map((item) => (
-            <a
-              key={item.id}
-              href={`#${item.id}`}
-              onClick={() => setMobileMenuOpen(false)}
-              className={`block px-3 py-2 rounded-md text-sm font-medium ${
-                activeSection === item.id ? 'bg-slate-800 text-brand-500' : 'text-slate-300 hover:text-white'
-              }`}
-            >
-              {item.label}
-            </a>
-          ))}
+        <div className="xl:hidden bg-slate-950/95 backdrop-blur-xl border-b border-slate-800 px-4 pt-2 pb-4 space-y-1">
+          {navItems.map((item) => {
+            const isActive = activeSection === item.id;
+            return (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                onClick={() => {
+                  onSelectSection?.(item.id);
+                  setMobileMenuOpen(false);
+                }}
+                className={`block px-3 py-2 rounded-md text-sm font-medium ${
+                  isActive
+                    ? item.id === 'limitations'
+                      ? 'bg-amber-500/20 text-amber-300 font-semibold'
+                      : 'bg-slate-800 text-brand-400 font-semibold'
+                    : 'text-slate-300 hover:text-white'
+                }`}
+              >
+                {item.label}
+              </a>
+            );
+          })}
         </div>
       )}
     </header>

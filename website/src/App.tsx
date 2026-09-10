@@ -22,6 +22,7 @@ export function App() {
       'overview',
       'data',
       'trends',
+      'audit',
       'features',
       'model',
       'validation',
@@ -32,27 +33,43 @@ export function App() {
     ];
 
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 200;
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+
+      // Bottom threshold: activate 'limitations' when user reaches near page bottom
+      if (windowHeight + scrollY >= documentHeight - 120) {
+        setActiveSection('limitations');
+        return;
+      }
+
+      // 140px offset accounts for fixed navbar (64px) + margin
+      const scrollPosition = scrollY + 140;
+      let currentSection = sections[0];
+
       for (const sectionId of sections) {
         const el = document.getElementById(sectionId);
         if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(sectionId);
-            break;
+          const top = el.getBoundingClientRect().top + scrollY;
+          if (scrollPosition >= top) {
+            currentSection = sectionId;
           }
         }
       }
+
+      setActiveSection(currentSection);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    // Run once on load to sync initial scroll position or hash
+    handleScroll();
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-brand-500 selection:text-slate-950">
-      <Navbar activeSection={activeSection} />
+      <Navbar activeSection={activeSection} onSelectSection={setActiveSection} />
       
       <main className="flex-1">
         <Hero data={metricsData} />
